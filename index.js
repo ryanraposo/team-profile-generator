@@ -2,66 +2,8 @@ const inquirer = require('inquirer');
 
 const { Manager, Engineer, Intern } = require('./lib/Employee.js');
 
-// import { generatePage } from './src/page-template.js';
+const { generatePage } = require('./src/page-template.js');
 // import { copyFile, writeFile } from './utils/generate-site.js';
-
-
-// function promptTeamManager() {
-//     return inquirer.prompt([
-//     {
-//         type: 'input',
-//         name: 'managerName',
-//         message: 'Enter the name of the team manager: (Required)',
-//         validate: managerNameInput => {
-//             if (managerNameInput) {
-//                 return true;
-//             } else {
-//                 console.log('Please enter the name of the team manager!');
-//                 return false;
-//             }
-//         }
-//     },
-//     {
-//         type: 'input',
-//         name: 'managerID',
-//         message: 'Enter an employee ID for the team manager: (Required)',
-//         validate: managerIDInput => {
-//             if (managerIDInput) {
-//                 return true;
-//             } else {
-//                 console.log('Please enter an employee ID for the team manager!');
-//                 return false;
-//             }
-//         }
-//     },
-//     {
-//         type: 'input',
-//         name: 'managerEmail',
-//         message: 'Enter an email address for the team manager: (Required)',
-//         validate: managerEmailInput => {
-//             if (managerEmailInput) {
-//                 return true;
-//             } else {
-//                 console.log('Please enter an email address for the team manager!');
-//                 return false;
-//             }
-//         }
-//     },
-//     {
-//         type: 'input',
-//         name: 'managerOfficeNumber',
-//         message: 'Enter an office number for the team manager: (Required)',
-//         validate: managerOfficeNumberInput => {
-//             if (managerOfficeNumberInput) {
-//                 return true;
-//             } else {
-//                 console.log('Please enter an office number for the team manager!');
-//                 return false;
-//             }
-//         }
-//     }
-//     ])
-// };
 
 
 function promptTeam(teamData) {
@@ -173,7 +115,24 @@ function promptTeam(teamData) {
 };
 
 promptTeam()
-    .then((teamData) => {console.log(teamData);})
+    .then((teamData) => {
+        let team = [];
+        for (const member in teamData) {
+            if (member.role == 'Manager') {
+                const manager = new Manager(member.name, member.id, member.email, member.officeNumber);
+                team.push(manager);
+            }
+            if (member.role == 'Engineer') {
+                const engineer = new Engineer(member.name, member.id, member.email, member.github);
+                team.push(engineer);
+            }
+            if (member.role == 'Intern') {
+                const intern = new Intern(member.name, member.id, member.email, member.school);
+                team.push(intern);
+            }
+        }
+        return generatePage(team);
+    })
 
 
 
