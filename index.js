@@ -117,7 +117,7 @@ function promptTeam(teamData) {
 promptTeam()
     .then((teamData) => {
         let team = [];
-        for (const member in teamData) {
+        for (const member of teamData) {
             if (member.role == 'Manager') {
                 const manager = new Manager(member.name, member.id, member.email, member.officeNumber);
                 team.push(manager);
@@ -132,6 +132,9 @@ promptTeam()
             }
         }
         return generatePage(team);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
     })
 
 

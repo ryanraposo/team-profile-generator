@@ -1,7 +1,5 @@
 function generateTeam(team) {
 
-    console.log(teamData);
-
     let teamHtmlArray = [];
 
     for (const member in team) {
