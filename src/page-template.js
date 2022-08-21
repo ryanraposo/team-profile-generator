@@ -2,8 +2,8 @@ function generateTeam(team) {
 
     let teamHtmlArray = [];
 
-    for (const member in team) {
-      if (member.role == 'Manager') {
+    team.forEach((member) => {
+      if (member.getRole() == 'Manager') {
         teamHtmlArray.push(`
           <div class="col-12 mb-2 bg-dark text-light p-3">
             <h3 class="team-member-name text-light">${member.name}</h3>
@@ -16,7 +16,7 @@ function generateTeam(team) {
           </div>
         `)
       };
-      if (member.role == 'Engineer') {
+      if (member.getRole() == 'Engineer') {
         teamHtmlArray.push(`
           <div class="col-12 mb-2 bg-dark text-light p-3">
             <h3 class="team-member-name text-light">${member.name}</h3>
@@ -29,7 +29,7 @@ function generateTeam(team) {
           </div>
         `)
       };
-      if (member.role == 'Intern') {
+      if (member.getRole() == 'Intern') {
         teamHtmlArray.push(`
           <div class="col-12 mb-2 bg-dark text-light p-3">
             <h3 class="team-member-name text-light">${member.name}</h3>
@@ -41,18 +41,20 @@ function generateTeam(team) {
             <p>School: ${member.school}</p>
           </div>
         `)
-      };
-    }
+      }
+    });
 
     const teamHtml = teamHtmlArray.join('');
 
-    return `
+    const sectionHtml = `
       <section class="my-3" id="team">
         <div class="flex-row justify-space-between">
           ${teamHtml}
         </div>
       </section>
     `;
+
+    return sectionHtml;
 };
 
 

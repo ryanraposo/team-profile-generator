@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const { Manager, Engineer, Intern } = require('./lib/Employee.js');
 
 const { generatePage } = require('./src/page-template.js');
-import { copyFile, writeFile } from './utils/generate-site.js';
+const { copyFile, writeFile } = require('./utils/generate-site.js');
 
 
 function promptTeam(teamData) {
@@ -133,28 +133,16 @@ promptTeam()
         }
         return generatePage(team);
     })
-    // .then(pageHTML => {
-    //     return writeFile(pageHTML);
-    // })
-
-
-
-
-// promptUser()
-//     .then(promptTeamMember)
-//     .then(promptData => {
-//         return generatePage(teamData);
-//     })
-//     .then(pageHTML => {
-//         return writeFile(pageHTML);
-//     })
-//     .then(writeFileResponse => {
-//         console.log(writeFileResponse);
-//         return copyFile();
-//     })
-//     .then(copyFileResponse => {
-//         console.log(copyFileResponse);
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     });
+    .then(pageHTML => {
+        writeFile(pageHTML);
+    })
+    .then(writeFileResponse => {
+        console.log(writeFileResponse);
+        return copyFile();
+    })
+    .then(copyFileResponse => {
+        console.log(copyFileResponse);
+    })
+    .catch(err => {
+        console.log(err);
+    });

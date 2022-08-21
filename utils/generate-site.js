@@ -1,4 +1,4 @@
-import fs from 'fs';
+const fs = require('fs');
 
 
 const writeFile = fileContent => {
@@ -35,4 +35,4 @@ const copyFile = () => {
 };
 
 
-export { writeFile, copyFile };
+module.exports = { writeFile, copyFile };
