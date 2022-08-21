@@ -11,7 +11,7 @@ function generateTeam(team) {
               Manager
             </h5>
             <p>ID: ${member.id}</p>
-            <p>Email: <a href="${member.email}">${member.email}</a></p>
+            <p>Email: <a href="mailto:${member.email}">${member.email}</a></p>
             <p>Office Number: ${member.officeNumber}</p>
           </div>
         `)
@@ -24,8 +24,8 @@ function generateTeam(team) {
               Engineer
             </h5>
             <p>ID: ${member.id}</p>
-            <p>Email: <a href="${member.email}">${member.email}</a></p>
-            <p>GitHub: ${member.github}</p>
+            <p>Email: <a href="mailto:${member.email}">${member.email}</a></p>
+            <p>GitHub: <a href="https://github.com/${member.github}">${member.github}</a></p>
           </div>
         `)
       };
@@ -37,7 +37,7 @@ function generateTeam(team) {
               Intern
             </h5>
             <p>ID: ${member.id}</p>
-            <p>Email: <a href="${member.email}">${member.email}</a></p>
+            <p>Email: <a href="mailto:${member.email}">${member.email}</a></p>
             <p>School: ${member.school}</p>
           </div>
         `)
