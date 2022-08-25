@@ -27,3 +27,5 @@ Answer a series of questions to generate a team page.
 
 ## Walkthrough
 
+https://user-images.githubusercontent.com/38861352/186717317-36e0abd8-6ca7-42f0-aa0e-12f79b9d1635.mov
+
